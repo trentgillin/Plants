@@ -109,7 +109,7 @@ server <- function(input, output) {
     })   
     
     output$image <- renderImage({
-        picture_files <- list.files(here::here("Invasive_Plants/images/"))
+        picture_files <- list.files(here::here("images/"))
         picture_files <- stringr::str_subset(str_to_lower(picture_files), str_to_lower(input$select))
        if (length(picture_files) > 1) {
             picture_files <- picture_files[1]
