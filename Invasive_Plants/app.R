@@ -47,7 +47,7 @@ ui <- fluidPage(theme = shinytheme("slate"),
                        label = 'Date Of Collection',
                        start = min(shiny_data$DATE_COLLECTED), end = max(shiny_data$DATE_COLLECTED)
         ),
-        imageOutput('image'),
+        #imageOutput('image'),
         p(
             "Sources: Latitude and longitude from ggmap package,
              D. Kahle and H. Wickham. ggmap: Spatial Visualization with ggplot2. The R Journal, 5(1),
@@ -108,19 +108,19 @@ server <- function(input, output) {
         
     })   
     
-    output$image <- renderImage({
-        picture_files <- list.files(here::here("images/"))
-        picture_files <- stringr::str_subset(str_to_lower(picture_files), str_to_lower(input$select))
-       if (length(picture_files) > 1) {
-            picture_files <- picture_files[1]
-        } else if (length(picture_files) == 0) {
-            picture_files <- "No Image.png"
-        } else {
-            picture_files <- picture_files
-        }
-        filename <- suppressWarnings(normalizePath(file.path('images', picture_files)))
-        list(src = filename)
-    }, deleteFile = FALSE)
+    # output$image <- renderImage({
+    #     picture_files <- list.files(here::here("images/"))
+    #     picture_files <- stringr::str_subset(str_to_lower(picture_files), str_to_lower(input$select))
+    #    if (length(picture_files) > 1) {
+    #         picture_files <- picture_files[1]
+    #     } else if (length(picture_files) == 0) {
+    #         picture_files <- "No Image.png"
+    #     } else {
+    #         picture_files <- picture_files
+    #     }
+    #     filename <- suppressWarnings(normalizePath(file.path('images', picture_files)))
+    #     list(src = filename)
+    # }, deleteFile = FALSE)
 }
 
 # Run the application 
